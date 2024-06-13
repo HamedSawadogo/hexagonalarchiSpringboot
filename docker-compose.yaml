@@ -1,0 +1,23 @@
+version: "1.0"
+services:
+
+  database:
+     image: postgres:latest
+     container_name: "master_class_database_test"
+     environment:
+       POSTGRES_USER: 'hamed'
+       POSTGRES_PASSWORD: 'hamed'
+       POSTGRES_BD: 'hamed'
+     restart: always
+     networks:
+       - my_network
+     volumes:
+       - master_class_database:/var/lib/postgres/data
+     ports:
+       - 5436:5432
+networks:
+  my_network: {}
+
+volumes:
+  master_class_database: {}
+

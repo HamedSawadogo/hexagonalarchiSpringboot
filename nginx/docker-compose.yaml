@@ -1,0 +1,50 @@
+version: "1.0"
+services:
+  front_end:
+    container_name: front_end
+    image: test_back:latest
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgres://5432/master_class
+      SPRING_DATASOURCE_USERNAME: master_class
+      SPRING_DATASOURCE_PASSWORD: master_class
+    build:
+      context: .
+    depends_on:
+      - database
+      - redix
+
+    restart: always
+  nginx:
+    image: nginx:alpine
+    container_name: "nginx-master-class"
+    restart: always
+    ports:
+      - 8080
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - master-class-network
+  redix:
+    image: redis:latest
+    container_name: redis_application
+    ports:
+      - 8086
+    restart: always
+  database:
+     image: postgres:latest
+     container_name: "master_class_database"
+     environment:
+       POSTGRES_DB: ${I_AM_DATABASE}
+       POSTGRES_USER: ${I_AM_USER}
+       POSTGRES_PASSWORD: ${I_AM_PASSWORD}
+     restart: always
+     ports:
+       - '5439:5436'
+     networks:
+       - master-class-network
+volumes:
+  nginx_data: {}
+  redis_data: {}
+
+networks:
+  master-class-network:
