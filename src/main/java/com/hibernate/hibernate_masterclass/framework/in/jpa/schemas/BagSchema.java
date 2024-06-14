@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class BagsSchema {
+public class BagSchema {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bag_schema")
@@ -40,6 +40,10 @@ public class BagsSchema {
     private String imagePath;
     private String category;
     private String closureType;
+
+    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.MERGE})
+    @MapsId
+    private UserSchema owner;
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "bag_books")

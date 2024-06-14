@@ -30,10 +30,10 @@ public class UserSchema {
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "adress")
+    @MapsId
     private AdressSchema address;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "bags")
-    private Set<BagsSchema> bags = new LinkedHashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    private Set<BagSchema> bags = new LinkedHashSet<>();
 
 }

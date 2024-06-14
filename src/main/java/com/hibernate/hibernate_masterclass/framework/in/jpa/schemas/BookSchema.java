@@ -25,5 +25,6 @@ public class BookSchema {
     private String description;
 
     private Double price;
+
     private LocalDate publishDate;
 }
