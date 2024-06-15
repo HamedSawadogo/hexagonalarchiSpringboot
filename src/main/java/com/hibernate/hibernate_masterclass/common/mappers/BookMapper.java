@@ -1,7 +1,7 @@
 package com.hibernate.hibernate_masterclass.common.mappers;
 
 import com.hibernate.hibernate_masterclass.domain.models.book.Book;
-import com.hibernate.hibernate_masterclass.domain.usecases.books.commands.BookRequestCommand;
+import com.hibernate.hibernate_masterclass.domain.usecases.books.commands.BaseBookRequestCommand;
 import com.hibernate.hibernate_masterclass.framework.in.jpa.schemas.BookSchema;
 import java.time.LocalDate;
 import org.springframework.stereotype.Component;
@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class BookMapper {
 
-  public  Book toModel(BookRequestCommand command) {
+  public  Book toModel(BaseBookRequestCommand command) {
     Book book = new Book();
-    book.setDescription(command.getDescription());
-    book.setName(command.getName());
-    book.setPrice(command.getPrice());
+    book.setDescription(command.description());
+    book.setName(command.name());
+    book.setPrice(command.price());
     book.setPublishDate(LocalDate.now());
     return book;
   }
@@ -24,6 +24,7 @@ public class BookMapper {
     book.setDescription(bookSchema.getDescription());
     book.setName(bookSchema.getName());
     book.setPrice(bookSchema.getPrice());
+    book.setPublishDate(bookSchema.getPublishDate());
     return book;
   }
 

@@ -1,7 +1,7 @@
 package com.hibernate.hibernate_masterclass.domain.usecases;
 
 import com.hibernate.hibernate_masterclass.domain.usecases.books.CreateBookUseCase;
-import com.hibernate.hibernate_masterclass.domain.usecases.books.commands.BookRequestCommand;
+import com.hibernate.hibernate_masterclass.framework.out.rest.controllers.books.dtos.BookRequestDto;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +17,11 @@ class CreateBookUseCaseIntegrationTest {
 
   @Test
   void create_book_use_case_test() {
-    BookRequestCommand requestCommand = new BookRequestCommand();
-    requestCommand.setDescription("description");
-    requestCommand.setName("name of book");
-    requestCommand.setPrice(556d);
+    var requestCommand = BookRequestDto.builder()
+            .name("name of the book")
+            .description("description of the book")
+            .price(6500d)
+            .build();
     var bookCreated = createBookUseCase.execute(requestCommand);
     System.err.println(bookCreated);
   }
