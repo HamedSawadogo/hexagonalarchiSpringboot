@@ -1,4 +1,4 @@
-package com.hibernate.hibernate_masterclass.framework.out.rest.exceptions.errosdtos;
+package com.hibernate.hibernate_masterclass.framework.out.rest.exceptions.validations.errosdtos;
 
 import lombok.Builder;
 

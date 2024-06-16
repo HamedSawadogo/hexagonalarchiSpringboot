@@ -14,6 +14,7 @@ public class BookMapper {
     book.setDescription(command.description());
     book.setName(command.name());
     book.setPrice(command.price());
+    book.setImageUrl(command.imageUrl());
     book.setPublishDate(LocalDate.now());
     return book;
   }
@@ -25,6 +26,7 @@ public class BookMapper {
     book.setName(bookSchema.getName());
     book.setPrice(bookSchema.getPrice());
     book.setPublishDate(bookSchema.getPublishDate());
+    book.setImageUrl(bookSchema.getImageUrl());
     return book;
   }
 
@@ -35,6 +37,7 @@ public class BookMapper {
      bookSchema.setPublishDate(book.getPublishDate());
      bookSchema.setName(book.getName());
      bookSchema.setPrice(book.getPrice());
+     bookSchema.setImageUrl(book.getImageUrl());
      return bookSchema;
   }
 }

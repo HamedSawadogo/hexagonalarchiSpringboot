@@ -5,5 +5,6 @@ public interface BaseBookRequestCommand {
   String name();
   String description();
   Double price();
+  String imageUrl();
 
 }

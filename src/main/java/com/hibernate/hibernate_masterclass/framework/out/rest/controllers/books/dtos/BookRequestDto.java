@@ -1,6 +1,8 @@
 package com.hibernate.hibernate_masterclass.framework.out.rest.controllers.books.dtos;
 
 import com.hibernate.hibernate_masterclass.domain.usecases.books.commands.BaseBookRequestCommand;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import lombok.Builder;
 
 /**
@@ -8,9 +10,13 @@ import lombok.Builder;
  **/
 @Builder
 public record BookRequestDto (
+        @NotBlank
         String name,
+        @NotBlank
         String description,
-        Double price
+        @Positive
+        Double price,
+        String imageUrl
 ) implements BaseBookRequestCommand {
 
 }

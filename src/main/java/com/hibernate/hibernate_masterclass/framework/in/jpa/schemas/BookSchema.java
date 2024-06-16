@@ -24,6 +24,8 @@ public class BookSchema {
     @Basic(fetch = FetchType.LAZY)
     private String description;
 
+    private String imageUrl;
+
     private Double price;
 
     private LocalDate publishDate;
