@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.28.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1719123203763-1" author="hamed">
+        <createSequence incrementBy="1" sequenceName="BookSchema_id_seq"/>
+    </changeSet>
+    <changeSet id="1719123203763-2" author="hamed">
+        <createSequence incrementBy="1" sequenceName="address_seq"/>
+    </changeSet>
+    <changeSet id="1719123203763-3" author="hamed">
+        <createSequence incrementBy="1" sequenceName="bag_schema"/>
+    </changeSet>
+    <changeSet id="1719123203763-4" author="hamed">
+        <createSequence incrementBy="1" sequenceName="user_seq"/>
+    </changeSet>
+    <changeSet id="1719123203763-5" author="hamed">
+        <createTable tableName="AdressSchema">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="AdressSchema_pkey"/>
+            </column>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="country" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="phone" type="VARCHAR(255)"/>
+            <column name="state" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1719123203763-6" author="hamed">
+        <createTable tableName="BagSchema">
+            <column name="brand" type="VARCHAR(255)"/>
+            <column name="capacity" type="INT"/>
+            <column name="category" type="VARCHAR(255)"/>
+            <column name="closureType" type="VARCHAR(255)"/>
+            <column name="color" type="VARCHAR(255)"/>
+            <column name="compartments" type="INT"/>
+            <column name="countryOfOrigin" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="dimensions" type="VARCHAR(255)"/>
+            <column name="genderTarget" type="VARCHAR(255)"/>
+            <column name="imagePath" type="VARCHAR(255)"/>
+            <column name="inStock" type="BOOLEAN"/>
+            <column name="manufactureDate" type="VARCHAR(255)"/>
+            <column name="material" type="VARCHAR(255)"/>
+            <column name="modelNumber" type="VARCHAR(255)"/>
+            <column name="price" type="DOUBLE precision"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="userRating" type="FLOAT"/>
+            <column name="warrantyPeriod" type="INT"/>
+            <column name="weight" type="DOUBLE precision"/>
+            <column name="owner_adress" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="BagSchema_pkey"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1719123203763-7" author="hamed">
+        <createTable tableName="BagsSchema">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="BagsSchema_pkey"/>
+            </column>
+            <column name="brand" type="VARCHAR(255)"/>
+            <column name="capacity" type="INT"/>
+            <column name="category" type="VARCHAR(255)"/>
+            <column name="closureType" type="VARCHAR(255)"/>
+            <column name="color" type="VARCHAR(255)"/>
+            <column name="compartments" type="INT"/>
+            <column name="countryOfOrigin" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="dimensions" type="VARCHAR(255)"/>
+            <column name="genderTarget" type="VARCHAR(255)"/>
+            <column name="imagePath" type="VARCHAR(255)"/>
+            <column name="inStock" type="BOOLEAN"/>
+            <column name="manufactureDate" type="VARCHAR(255)"/>
+            <column name="material" type="VARCHAR(255)"/>
+            <column name="modelNumber" type="VARCHAR(255)"/>
+            <column name="price" type="DOUBLE precision"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="userRating" type="FLOAT"/>
+            <column name="warrantyPeriod" type="INT"/>
+            <column name="weight" type="DOUBLE precision"/>
+            <column name="bags" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1719123203763-8" author="hamed">
+        <createTable tableName="BookSchema">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="BookSchema_pkey"/>
+            </column>
+            <column name="description" type="OID"/>
+            <column name="imageUrl" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="price" type="DOUBLE precision"/>
+            <column name="publishDate" type="date"/>
+            <column name="bag_books" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1719123203763-9" author="hamed">
+        <createTable tableName="UserSchema">
+            <column name="adress" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="UserSchema_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="sexe" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1719123203763-10" author="hamed">
+        <addForeignKeyConstraint baseColumnNames="owner_adress" baseTableName="BagSchema"
+                                 constraintName="FK98ur7sclqvaap5c7jscyxqnlx" onDelete="NO ACTION"
+                                 referencedColumnNames="adress" referencedTableName="UserSchema"/>
+    </changeSet>
+    <changeSet id="1719123203763-11" author="hamed">
+        <addForeignKeyConstraint baseColumnNames="adress" baseTableName="UserSchema"
+                                 constraintName="FKjepnbm600ybuf71ul1hiswtnc" onDelete="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="AdressSchema"/>
+    </changeSet>
+    <changeSet id="1719123203763-12" author="hamed">
+        <addForeignKeyConstraint baseColumnNames="bag_books" baseTableName="BookSchema"
+                                 constraintName="FKsrk038eiucrk8pgj7uih230ot" onDelete="NO ACTION"
+                                 referencedColumnNames="owner_adress" referencedTableName="BagSchema"/>
+    </changeSet>
+
+</databaseChangeLog>

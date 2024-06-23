@@ -18,8 +18,6 @@ spring:
     url: jdbc:postgresql://localhost:5436/hamed
     username: hamed
     password: hamed
-  liquibase:
-    enabled: true
   mail:
     properties:
       mail:
