@@ -1,6 +1,5 @@
 version: "3.3"
 services:
-
   database:
      image: postgres:latest
      container_name: "master_class_database_test"

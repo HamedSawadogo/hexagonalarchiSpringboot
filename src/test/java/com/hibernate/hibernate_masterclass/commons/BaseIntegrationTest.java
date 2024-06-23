@@ -2,7 +2,6 @@ package com.hibernate.hibernate_masterclass.commons;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hibernate.hibernate_masterclass.framework.in.jpa.repositories.BookJpaRepository;
-import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,6 @@
 server:
   port: 9001
 spring:
-  liquibase:
-    enabled: true
-    contexts: non-seed
   jpa:
     database: postgresql
     show-sql: true
@@ -21,6 +18,8 @@ spring:
     url: jdbc:postgresql://localhost:5436/hamed
     username: hamed
     password: hamed
+  liquibase:
+    enabled: true
   mail:
     properties:
       mail:

@@ -1,5 +1,6 @@
-package com.hibernate.hibernate_masterclass.framework.out.rest.exceptions;
+package com.hibernate.hibernate_masterclass.framework.out.rest.exceptions.validations;
 
+import com.hibernate.hibernate_masterclass.framework.out.rest.exceptions.validations.errosdtos.ErrorMessage;
 import com.hibernate.hibernate_masterclass.framework.out.rest.exceptions.validations.errosdtos.ValidationErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,12 +20,12 @@ import java.util.List;
 @ControllerAdvice
 public class GlobalExceptionManager {
 
-//    @ExceptionHandler({Exception.class})
-//    public ResponseEntity<ErrorMessage>  resourceNotFoundException(Exception e) {
-//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-//                .body(new ErrorMessage(e.getMessage(),
-//                HttpStatus.INTERNAL_SERVER_ERROR.value(), LocalDateTime.now()));
-//    }
+    @ExceptionHandler({Exception.class})
+    public ResponseEntity<ErrorMessage>  resourceNotFoundException(Exception e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(new ErrorMessage(e.getMessage(),
+                HttpStatus.INTERNAL_SERVER_ERROR.value(), LocalDateTime.now()));
+    }
 
     @ExceptionHandler({MethodArgumentNotValidException.class})
     public ResponseEntity<List<ValidationErrorResponse>> methodArgumentNotValidException(
