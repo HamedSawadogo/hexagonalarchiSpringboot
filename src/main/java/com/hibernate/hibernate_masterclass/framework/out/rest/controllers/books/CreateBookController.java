@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * @author Sawadogo hamed   email <kerb418@gmail.com>
@@ -21,10 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class CreateBookController {
 
     private final CreateBookUseCase createBookUseCase;
+    private final RestTemplate restTemplate  = new RestTemplate();
 
     @PostMapping(Uris.BASE_URL + Uris.BOOKS)
     public ResponseEntity<Long> createBook(@Validated @RequestBody BookRequestDto bookRequestDto) {
         var bookCreated = createBookUseCase.execute(bookRequestDto);
-       return ResponseEntity.status(HttpStatus.CREATED).body(bookCreated.getId());
+        return ResponseEntity.status(HttpStatus.CREATED).body(bookCreated.getId());
     }
 }

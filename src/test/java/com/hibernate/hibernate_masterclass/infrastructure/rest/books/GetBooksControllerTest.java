@@ -14,7 +14,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 class GetBooksControllerTest extends BaseIntegrationTest {
 
-
     @Test
     void get_books_should_returned_200_ok() throws Exception {
         mockMvc.perform(get(Uris.BASE_URL + Uris.BOOKS)
