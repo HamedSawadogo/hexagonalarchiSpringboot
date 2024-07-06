@@ -20,7 +20,7 @@ import java.util.List;
 @ControllerAdvice
 public class GlobalExceptionManager {
 
-    @ExceptionHandler({Exception.class})
+    @ExceptionHandler({NullPointerException.class})
     public ResponseEntity<ErrorMessage>  resourceNotFoundException(Exception e) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(new ErrorMessage(e.getMessage(),
